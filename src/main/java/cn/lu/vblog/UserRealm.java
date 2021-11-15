@@ -1,9 +1,11 @@
 package cn.lu.vblog;
 
+import cn.lu.vblog.constant.RedisKeyConstants;
+import cn.lu.vblog.entity.AdminUser;
 import cn.lu.vblog.exception.CustomizeException;
 import cn.lu.vblog.service.AdminService;
 import cn.lu.vblog.exception.CustomizeErrorCode;
-import cn.lu.vblog.pojo.AdminUser;
+import cn.lu.vblog.util.RedisUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -24,6 +26,9 @@ public class UserRealm extends AuthorizingRealm {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private RedisUtils redisUtils;
 
     @Override
     public boolean supports(AuthenticationToken token) {
@@ -58,10 +63,10 @@ public class UserRealm extends AuthorizingRealm {
         }
 
         //数据库查询
-        AdminUser adminUser = new AdminUser();
-        adminUser.setUsername("lkx");
-        adminUser.setPassword("123456");
-        adminUser.setUserId(1);
+
+        String tokenKey = RedisKeyConstants.MANAGE_SYS_USER_TOKEN + token;
+        Long userId = redisUtils.getObj(tokenKey, Long.class);
+        AdminUser adminUser = adminService.getUserById(userId);
 
         //由Shiro验证
         //猜测：Shiro会验证AuthenticationToken和输入的token是否一致

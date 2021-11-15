@@ -1,6 +1,7 @@
 package cn.lu.vblog.controller.admin;
 
-import cn.lu.vblog.pojo.AdminUser;
+import cn.lu.vblog.ApiResult;
+import cn.lu.vblog.entity.AdminUser;
 import cn.lu.vblog.service.AdminService;
 import cn.lu.vblog.service.CaptchaService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -14,8 +15,6 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -57,29 +56,23 @@ public class LoginController {
 
     @ResponseBody
     @PostMapping("/login")
-    public Map loginForm(String username,
+    public String loginForm(String username,
                          String password,
                          String answer,
                          String uuid,
-                         Model model,
                          HttpServletResponse response){
-        AdminUser adminUser = new AdminUser();
-        adminUser.setUsername("lkx");
-        adminUser.setPassword("123456");
-        HashMap<String, String> result = new HashMap<>();
         if(!captchaService.verifyCaptcha(uuid, answer)){
-            result.put("code","fail");
-            result.put("msg","验证码错误");
-            return result;
+            return ApiResult.fail("验证码错误");
+        }
+        AdminUser adminUser = adminService.getUserByName(username);
+        if (adminUser == null){
+            return ApiResult.fail("找不到用户名");
         }
         if (!Objects.equals(password, adminUser.getPassword())){
-            result.put("code","fail");
-            result.put("msg","密码错误");
-            return result;
+            return ApiResult.fail("密码错误");
         }
-        adminService.saveToken(1,response);
-        result.put("code","success");
-        return result;
+        adminService.saveToken(adminUser.getId(),response);
+        return ApiResult.success();
     }
 
     @GetMapping("/index")

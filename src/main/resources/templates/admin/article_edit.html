@@ -50,15 +50,15 @@
                             <input type="hidden" name="status"
                                    th:value="${contents!=null and contents.status !=null}?${contents.status}: 'publish'"
                                    id="status"/>
-                            <input type="hidden" name="allowComment"
-                                   th:value="${contents!=null and contents.allowComment !=null}?${contents.allowComment}: true"
-                                   id="allow_comment"/>
-                            <input type="hidden" name="allowPing"
-                                   th:value="${contents!=null and contents.allowPing !=null}?${contents.allowPing}: true"
-                                   id="allow_ping"/>
-                            <input type="hidden" name="allowFeed"
-                                   th:value="${contents!=null and contents.allowFeed !=null}?${contents.allowFeed}: true"
-                                   id="allow_feed"/>
+<!--                            <input type="hidden" name="allowComment"-->
+<!--                                   th:value="${contents!=null and contents.allowComment !=null}?${contents.allowComment}: true"-->
+<!--                                   id="allow_comment"/>-->
+<!--                            <input type="hidden" name="allowPing"-->
+<!--                                   th:value="${contents!=null and contents.allowPing !=null}?${contents.allowPing}: true"-->
+<!--                                   id="allow_ping"/>-->
+<!--                            <input type="hidden" name="allowFeed"-->
+<!--                                   th:value="${contents!=null and contents.allowFeed !=null}?${contents.allowFeed}: true"-->
+<!--                                   id="allow_feed"/>-->
                             <input type="hidden" name="content" id="content-editor"/>
 
                             <div class="form-group col-md-6" style="padding: 0 10px 0 0;">
@@ -116,13 +116,13 @@
                                           <!--th:utext="${contents!=null and contents.content !=null}?${contents.content}: ''"></textarea>-->
                             <!--</div>-->
 
-                            <div class="form-group col-md-3 col-sm-4" id="comment-div">
-                                <label class="col-sm-4">开启评论</label>
-                                <div class="col-sm-8">
-                                    <div th:class="${contents!=null and contents.allowComment!=null }?'toggle toggle-success allow-'+${contents.allowComment}:'toggle toggle-success allow-true'"
-                                         onclick="allow_comment(this);"></div>
-                                </div>
-                            </div>
+<!--                            <div class="form-group col-md-3 col-sm-4" id="comment-div">-->
+<!--                                <label class="col-sm-4">开启评论</label>-->
+<!--                                <div class="col-sm-8">-->
+<!--                                    <div th:class="${contents!=null and contents.allowComment!=null }?'toggle toggle-success allow-'+${contents.allowComment}:'toggle toggle-success allow-true'"-->
+<!--                                         onclick="allow_comment(this);"></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
 
                             <!--<div class="form-group col-md-3 col-sm-4">-->
                                 <!--<label class="col-sm-4">允许Ping</label>-->

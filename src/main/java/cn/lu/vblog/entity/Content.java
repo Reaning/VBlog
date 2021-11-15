@@ -9,8 +9,7 @@ import com.baomidou.mybatisplus.annotation.Version;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 /**
  * <p>
@@ -20,8 +19,9 @@ import lombok.Setter;
  * @author lkxBruce
  * @since 2021-11-15
  */
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @ApiModel(value = "Content对象", description = "")
 public class Content implements Serializable {
 
@@ -62,7 +62,7 @@ public class Content implements Serializable {
     private String tag;
 
     @TableLogic
-    private Integer delete;
+    private Integer deleted;
 
 
 }

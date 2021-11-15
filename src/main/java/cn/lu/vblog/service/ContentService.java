@@ -1,5 +1,6 @@
 package cn.lu.vblog.service;
 
+import cn.lu.vblog.dto.ContentDTO;
 import cn.lu.vblog.entity.Content;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -11,6 +12,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author lkxBruce
  * @since 2021-11-15
  */
-public interface IContentService extends IService<Content> {
+public interface ContentService{
 
+    void saveContent(ContentDTO contentDTO);
+
+    Content initContent();
 }

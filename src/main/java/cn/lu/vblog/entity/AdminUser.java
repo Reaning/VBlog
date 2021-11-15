@@ -56,7 +56,7 @@ public class AdminUser implements Serializable {
     private Integer version;
 
     @TableLogic
-    private Integer delete;
+    private Integer deleted;
 
 
 }

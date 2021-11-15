@@ -1,5 +1,7 @@
 package cn.lu.vblog.service;
 
+import cn.lu.vblog.entity.AdminUser;
+
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -11,7 +13,11 @@ import javax.servlet.http.HttpServletResponse;
  * @project VBlog
  */
 public interface AdminService {
-    void saveToken(Integer userId, HttpServletResponse response);
+    void saveToken(Long userId, HttpServletResponse response);
 
     Integer getUserIdByToken(String token);
+
+    AdminUser getUserByName(String username);
+
+    AdminUser getUserById(Long id);
 }

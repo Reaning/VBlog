@@ -1,4 +1,4 @@
-package cn.lu.vblog;
+package cn.lu.vblog.config.shiro;
 
 import org.apache.shiro.authc.AuthenticationToken;
 

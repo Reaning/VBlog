@@ -1,4 +1,4 @@
-package cn.lu.vblog;
+package cn.lu.vblog.config.shiro;
 
 import cn.lu.vblog.constant.RedisKeyConstants;
 import cn.lu.vblog.entity.AdminUser;

@@ -1,7 +1,5 @@
-package cn.lu.vblog.config;
+package cn.lu.vblog.config.shiro;
 
-import cn.lu.vblog.MyFilter;
-import cn.lu.vblog.UserRealm;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;

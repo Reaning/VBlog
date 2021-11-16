@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller
 @RequestMapping("/admin/article")
-public class PublishController {
+public class ArticleController {
 
     @Autowired
     private ContentService contentService;

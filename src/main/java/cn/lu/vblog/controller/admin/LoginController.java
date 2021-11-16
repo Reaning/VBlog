@@ -74,9 +74,4 @@ public class LoginController {
         adminService.saveToken(adminUser.getId(),response);
         return ApiResult.success();
     }
-
-    @GetMapping("/index")
-    public String index(){
-        return "/admin/index";
-    }
 }

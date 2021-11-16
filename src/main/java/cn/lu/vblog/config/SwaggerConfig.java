@@ -2,6 +2,7 @@ package cn.lu.vblog.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.ApiInfo;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
  */
 @Configuration
 @EnableOpenApi
+//@EnableWebMvc
 public class SwaggerConfig {
     @Bean
     public Docket docket(){

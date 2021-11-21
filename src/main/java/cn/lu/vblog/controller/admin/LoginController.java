@@ -4,6 +4,7 @@ import cn.lu.vblog.ApiResult;
 import cn.lu.vblog.entity.AdminUser;
 import cn.lu.vblog.service.AdminService;
 import cn.lu.vblog.service.CaptchaService;
+import cn.lu.vblog.util.CommonUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,9 @@ public class LoginController {
     @Autowired
     private AdminService adminService;
 
+    @Autowired
+    private CommonUtils commonUtils;
+
     @GetMapping("/login")
     public String loginPage(Model model){
         String captchaID = UUID.randomUUID().toString();
@@ -60,7 +64,9 @@ public class LoginController {
                          String password,
                          String answer,
                          String uuid,
-                         HttpServletResponse response){
+                         HttpServletResponse response,
+                            Model model){
+        model.addAttribute("commons",commonUtils);
         if(!captchaService.verifyCaptcha(uuid, answer)){
             return ApiResult.fail("验证码错误");
         }

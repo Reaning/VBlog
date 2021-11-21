@@ -1,5 +1,6 @@
 package cn.lu.vblog.config.mybatisplus;
 
+import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class MyBatisPlusConfig {
 
     @Bean
-    public OptimisticLockerInnerInterceptor optimisticLockerInnerInterceptor(){
-        return new OptimisticLockerInnerInterceptor();
+    public MybatisPlusInterceptor mybatisPlusInterceptor(){
+        MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
+        mybatisPlusInterceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
+        return mybatisPlusInterceptor;
     }
 }

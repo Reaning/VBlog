@@ -1,13 +1,12 @@
-package cn.lu.vblog.intercepter;
+package cn.lu.vblog.config.intercepter;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * cn.lu.vblog.intercepter
+ * cn.lu.vblog.config.intercepter
  *
  * @author lkxBruce
  * @date 2021/11/21 21:39

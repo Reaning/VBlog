@@ -1,4 +1,4 @@
-package cn.lu.vblog.intercepter;
+package cn.lu.vblog.config.intercepter;
 
 import cn.lu.vblog.util.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * cn.lu.vblog.intercepter
+ * cn.lu.vblog.config.intercepter
  *
  * @author lkxBruce
  * @date 2021/11/21 21:19

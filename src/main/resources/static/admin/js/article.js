@@ -2,7 +2,7 @@
  * Created by 13 on 2017/2/22.
  */
 // Tags Input
-$('#tags').tagsInput({
+$('#tag').tagsInput({
     width: '100%',
     height: '35px',
     defaultText: '请输入文章标签'
@@ -40,9 +40,8 @@ function subArticle(status) {
     $('#content-editor').val(content);
     $("#articleForm #status").val(status);
     $("#articleForm #categories").val($('#multiple-sel').val());
-    $("#articleForm #type").val($('#multiple-type').val());
     var params = $("#articleForm").serialize();
-    var url = $('#articleForm #cid').val() != '' ? '/admin/article/modify' : '/admin/article/publish';
+    var url = $('#articleForm #id').val() != '' ? '/admin/article/modify' : '/admin/article/publish';
     tale.post({
         url:url,
         data:params,
@@ -109,34 +108,39 @@ $('div.allow-false').toggles({
     }
 });
 
-$('#multiple-type').change(function () {
-    var postType = $('#multiple-type').val();
-    var tags = $('#tags');
-    var categories = $('#multiple-sel');
-    if(postType == 'post'){
-        $('#tags_tagsinput').show(500);
-        $('#s2id_multiple-sel').show(500);
-        $('#comment-div').attr("style","display:block;");
-    }else {
-        $('#tags_tagsinput').hide(500);
-        $('#s2id_multiple-sel').hide(500);
-        $('#comment-div').attr("style","display:none;");
-
-    }
-});
-
-$(function () {
-    var postType = $('#multiple-type').val();
-    var tags = $('#tags');
-    var categories = $('#multiple-sel');
-    if(postType == 'post'){
-        $('#tags_tagsinput').show();
-        $('#s2id_multiple-sel').show();
-        $('#comment-div').attr("style","display:block;");
-    }else {
-        $('#tags_tagsinput').hide();
-        $('#s2id_multiple-sel').hide();
-        $('#comment-div').attr("style","display:none;");
-
-    }
-});
+// $('#multiple-type').change(function () {
+//     var postType = $('#multiple-type').val();
+//     var tags = $('#tags');
+//     var categories = $('#multiple-sel');
+//     // if(postType == 'post'){
+//     //     $('#tags_tagsinput').show(500);
+//     //     $('#s2id_multiple-sel').show(500);
+//     //     $('#comment-div').attr("style","display:block;");
+//     // }else {
+//     //     $('#tags_tagsinput').hide(500);
+//     //     $('#s2id_multiple-sel').hide(500);
+//     //     $('#comment-div').attr("style","display:none;");
+//     //
+//     // }
+//     $('#tags_tagsinput').show(500);
+//     $('#s2id_multiple-sel').show(500);
+//     $('#comment-div').attr("style","display:block;");
+// });
+//
+// $(function () {
+//     var postType = $('#multiple-type').val();
+//     var tags = $('#tags');
+//     var categories = $('#multiple-sel');
+//     // if(postType == 'post'){
+//     //     $('#tags_tagsinput').show();
+//     //     $('#s2id_multiple-sel').show();
+//     //     $('#comment-div').attr("style","display:block;");
+//     // }else {
+//     //     $('#tags_tagsinput').hide();
+//     //     $('#s2id_multiple-sel').hide();
+//     //     $('#comment-div').attr("style","display:none;");
+//     // }
+//     $('#tags_tagsinput').show();
+//     $('#s2id_multiple-sel').show();
+//     $('#comment-div').attr("style","display:block;");
+// });

@@ -1,19 +1,16 @@
 package cn.lu.vblog;
 
-import cn.lu.vblog.entity.AdminUser;
+import cn.lu.vblog.entity.Content;
 import cn.lu.vblog.mapper.AdminUserMapper;
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-import com.baomidou.mybatisplus.generator.config.PackageConfig;
-import com.baomidou.mybatisplus.generator.config.StrategyConfig;
-import com.baomidou.mybatisplus.generator.config.rules.DateType;
-import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import com.baomidou.mybatisplus.generator.fill.Column;
+import cn.lu.vblog.mapper.ContentMapper;
+import cn.lu.vblog.service.ContentService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 @SpringBootTest
 class VBlogApplicationTests {
@@ -77,17 +74,27 @@ class VBlogApplicationTests {
     @Autowired
     private AdminUserMapper adminUserMapper;
 
+    @Autowired
+    private ContentMapper contentMapper;
+
+    @Autowired
+    private ContentService contentService;
+
     @Test
     void contextLoads() {
-        AdminUser user = adminUserMapper.selectById(2L);
-        user.setUsername("kx");
-//        user.setPassword("123456");
-//        user.setActive(1);
-//        user.setAvatarUrl("");
-//        user.setHomeUrl("");
-//        user.setVersion(1);
-//        user.setEmail("1262241648@qq.com");
-//        adminUserMapper.insert(user);
-        adminUserMapper.updateById(user);
+//        AdminUser user = adminUserMapper.selectById(2L);
+//        user.setUsername("kx");
+////        user.setPassword("123456");
+////        user.setActive(1);
+////        user.setAvatarUrl("");
+////        user.setHomeUrl("");
+////        user.setVersion(1);
+////        user.setEmail("1262241648@qq.com");
+////        adminUserMapper.insert(user);
+//        adminUserMapper.updateById(user);
+        PageHelper.startPage(1,15);
+        List<Content> contents = contentMapper.selectList(null);
+        PageInfo<Content> contentPageInfo = new PageInfo<>(contents);
+        contentPageInfo.getNextPage();
     }
 }

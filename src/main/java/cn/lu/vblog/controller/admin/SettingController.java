@@ -8,16 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * cn.lu.vblog.controller.admin
  *
  * @author lkxBruce
- * @date 2021/11/15 19:52
+ * @date 2021/11/22 11:39
  * @email lkxbruce@gmail.com
  * @project VBlog
  */
-
 @Controller
-@RequestMapping("/admin")
-public class AttachController {
-    @GetMapping("/attach")
-    public String attach(){
-        return "/admin/attach";
+@RequestMapping("/admin/setting")
+public class SettingController {
+    @GetMapping("")
+    public String setting(){
+        return "/admin/setting";
     }
 }

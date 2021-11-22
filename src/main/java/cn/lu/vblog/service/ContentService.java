@@ -2,7 +2,7 @@ package cn.lu.vblog.service;
 
 import cn.lu.vblog.dto.ContentDTO;
 import cn.lu.vblog.entity.Content;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
 
 /**
  * <p>
@@ -17,4 +17,12 @@ public interface ContentService{
     void saveContent(ContentDTO contentDTO);
 
     Content initContent();
+
+    Content getContentById(Long id);
+
+    PageInfo<Content> selectPage(int page, int limit);
+
+    void deleteById(Long id);
+
+    void modifyContent(Content content,ContentDTO contentDTO);
 }

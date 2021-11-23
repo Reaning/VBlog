@@ -8,6 +8,8 @@ import cn.lu.vblog.service.AdminService;
 import cn.lu.vblog.util.RedisUtils;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,5 +61,12 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public AdminUser getUserById(Long id) {
         return adminUserMapper.selectById(id);
+    }
+
+    @Override
+    public AdminUser getCurrentUser() {
+        Subject subject = SecurityUtils.getSubject();
+        AdminUser user = (AdminUser) subject.getPrincipal();
+        return user;
     }
 }

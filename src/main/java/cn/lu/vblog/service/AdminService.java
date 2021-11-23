@@ -20,4 +20,6 @@ public interface AdminService {
     AdminUser getUserByName(String username);
 
     AdminUser getUserById(Long id);
+
+    AdminUser getCurrentUser();
 }

@@ -4,6 +4,8 @@ import cn.lu.vblog.dto.Result.MessageDTO;
 import com.alibaba.fastjson.JSON;
 import com.mysql.cj.protocol.Message;
 
+import java.io.Serializable;
+
 /**
  * cn.lu.vblog
  *
@@ -12,7 +14,7 @@ import com.mysql.cj.protocol.Message;
  * @email lkxbruce@gmail.com
  * @project VBlog
  */
-public class ApiResult {
+public class ApiResult implements Serializable {
     public static String success(){
         MessageDTO success = new MessageDTO("success", "");
         return JSON.toJSONString(success);

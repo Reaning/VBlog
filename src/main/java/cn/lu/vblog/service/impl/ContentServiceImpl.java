@@ -4,7 +4,9 @@ import cn.lu.vblog.dto.ContentDTO;
 import cn.lu.vblog.entity.AdminUser;
 import cn.lu.vblog.entity.Content;
 import cn.lu.vblog.mapper.ContentMapper;
+import cn.lu.vblog.service.AdminService;
 import cn.lu.vblog.service.ContentService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -28,6 +30,9 @@ public class ContentServiceImpl implements ContentService {
 
     @Autowired
     private ContentMapper contentMapper;
+
+    @Autowired
+    private AdminService adminService;
 
     @Override
     public void saveContent(ContentDTO contentDTO){
@@ -61,8 +66,11 @@ public class ContentServiceImpl implements ContentService {
 
     @Override
     public PageInfo<Content> selectPage(int page, int limit) {
+        AdminUser user = adminService.getCurrentUser();
         PageHelper.startPage(page,limit);
-        List<Content> contents = contentMapper.selectList(null);
+        QueryWrapper<Content> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("creator",user.getId());
+        List<Content> contents = contentMapper.selectList(queryWrapper);
         PageInfo<Content> pageInfo = new PageInfo<>(contents);
         return pageInfo;
     }

@@ -12,6 +12,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,9 +42,10 @@ public class ContentServiceImpl implements ContentService {
         Content content = initContent();
         content.setContent(contentDTO.getContent());
         content.setTitle(contentDTO.getTitle());
-        content.setSubtitle(contentDTO.getSubTitle());
+        content.setSubtitle(contentDTO.getSubtitle());
+        content.setImgUrl(contentDTO.getImgUrl());
         content.setStatus(contentDTO.getStatus());
-        content.setCategory(contentDTO.getCategories());
+        content.setCategory(contentDTO.getCategory());
         content.setCreator(adminUser.getId());
         content.setTag(contentDTO.getTag());
         contentMapper.insert(content);
@@ -82,12 +84,7 @@ public class ContentServiceImpl implements ContentService {
 
     @Override
     public void modifyContent(Content content, ContentDTO contentDTO) {
-        content.setSubtitle(contentDTO.getSubTitle());
-        content.setCategory(contentDTO.getCategories());
-        content.setTitle(contentDTO.getTitle());
-        content.setStatus(contentDTO.getStatus());
-        content.setTag(contentDTO.getTag());
-        content.setContent(contentDTO.getContent());
+        BeanUtils.copyProperties(contentDTO,content);
         contentMapper.updateById(content);
     }
 

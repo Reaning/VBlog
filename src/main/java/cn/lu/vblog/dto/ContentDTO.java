@@ -17,10 +17,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ContentDTO {
     private String title;
-    private String subTitle;
+    private String subtitle;
+    private String imgUrl;
     private String content;
     private Integer status;
     private String tag;
-    private String categories;
+    private String category;
     private Long id;
 }

@@ -39,7 +39,7 @@ function subArticle(status) {
     }
     $('#content-editor').val(content);
     $("#articleForm #status").val(status);
-    $("#articleForm #categories").val($('#multiple-sel').val());
+    $("#articleForm #category").val($('#multiple-sel').val());
     var params = $("#articleForm").serialize();
     var url = $('#articleForm #id').val() != '' ? '/admin/article/modify' : '/admin/article/publish';
     tale.post({

@@ -42,19 +42,22 @@ public class MyFilter extends AuthenticatingFilter {
         String token = getRequestToken((HttpServletRequest) servletRequest);
         if(token == null || StringUtils.isBlank(token)){
             //抛出错误
-            throw new CustomizeException(CustomizeErrorCode.UNAUTHORIZED);
+            redirectToLogin(servletRequest,servletResponse);
+            return false;
         }
         boolean success = executeLogin(servletRequest, servletResponse);
         if (success){
             return true;
         }else{
             //报错
-            throw new CustomizeException(CustomizeErrorCode.UNAUTHORIZED);
+            redirectToLogin(servletRequest,servletResponse);
+            return false;
         }
     }
 
     private String getRequestToken(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();
+        if (cookies == null)return null;
         for (Cookie cookie : cookies){
             if (cookie.getName().equals("token")){
                 return cookie.getValue();

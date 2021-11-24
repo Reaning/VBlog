@@ -24,7 +24,7 @@ public class IndexController {
     @Autowired
     private ContentService contentService;
 
-    @GetMapping("/")
+    @GetMapping({"/","index","index.html"})
     public String index(
             @RequestParam(value = "page",required = false,defaultValue = "1") Integer page,
             @RequestParam(value = "limit",required = false,defaultValue = "5") Integer limit,
@@ -33,10 +33,5 @@ public class IndexController {
         PageInfo<ArticleDTO> pageInfo = contentService.getArticlePages(page,limit);
         model.addAttribute("articles",pageInfo);
         return "blog/index";
-    }
-
-    @GetMapping("/lkx")
-    public String lkx(){
-        return "/views/level1/2";
     }
 }

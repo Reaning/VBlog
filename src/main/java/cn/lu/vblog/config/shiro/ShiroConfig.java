@@ -65,6 +65,7 @@ public class ShiroConfig {
         filterMap.put("/**","anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         shiroFilterFactoryBean.setLoginUrl("/admin/login");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/admin/login");
         return shiroFilterFactoryBean;
     }
 

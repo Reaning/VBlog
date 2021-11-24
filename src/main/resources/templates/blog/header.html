@@ -6,24 +6,70 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title th:text="${title}"></title>
-        <!--        <link th:href="@{//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" type="text/css"/>-->
-        <!--        <link th:href="@{//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet"/>-->
         <link rel="icon" type="image/x-icon" th:href="@{/blog/assets/favicon.ico}" />
-        <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
 
         <!-- Core theme CSS (includes Bootstrap)-->
         <script th:src="@{/admin/js/jquery-3.6.0.min.js}"></script>
+<!--        <link th:href="@{/admin/css/styles.css}" rel="stylesheet" />-->
         <link th:href="@{/blog/css/styles.css}" rel="stylesheet" />
         <script th:src="@{/admin/editormd/editormd.min.js}"></script>
         <script th:src="@{/admin/editormd/lib/prettify.min.js}"></script>
         <script th:src="@{/admin/editormd/lib/marked.min.js}"></script>
-<!--        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
-<!--        <link rel="stylesheet" th:href="@{/admin/editormd/css/editormd.preview.css}">-->
-        <!--        <script src="@{/admin/js/jquery.app.js}"></script>-->
-<!--        code.jquery.com/jquery-3.6.0.min.js-->
-
+<!--        <script src="https://kit.fontawesome.com/8dab249ad0.js" crossorigin="anonymous"></script>-->
     </head>
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav" th:fragment="navbar">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <footer class="border-top" th:fragment="footer">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item">
+                            <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="tencent://message/?uin=1262241648&Site=&Menu=yes">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+<!--                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>-->
+                                        <i class="fab fa-qq fa-stack-1x fa-inverse"></i>
+                                    </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://github.com/Reaning/VBlog">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2021</div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </html>

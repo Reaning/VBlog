@@ -27,7 +27,7 @@ import javax.websocket.server.PathParam;
  */
 @Controller
 @RequestMapping("/admin/article")
-public class ArticleController {
+public class AdminArticleController {
 
     @Autowired
     private ContentService contentService;

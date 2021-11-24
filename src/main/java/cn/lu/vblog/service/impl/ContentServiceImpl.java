@@ -1,11 +1,14 @@
 package cn.lu.vblog.service.impl;
 
+import cn.lu.vblog.dto.ArticleDTO;
 import cn.lu.vblog.dto.ContentDTO;
 import cn.lu.vblog.entity.AdminUser;
 import cn.lu.vblog.entity.Content;
 import cn.lu.vblog.mapper.ContentMapper;
 import cn.lu.vblog.service.AdminService;
 import cn.lu.vblog.service.ContentService;
+import cn.lu.vblog.util.CommonUtils;
+import cn.lu.vblog.util.SysUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.pagehelper.PageHelper;
@@ -17,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -34,6 +38,7 @@ public class ContentServiceImpl implements ContentService {
 
     @Autowired
     private AdminService adminService;
+
 
     @Override
     public void saveContent(ContentDTO contentDTO){
@@ -86,6 +91,24 @@ public class ContentServiceImpl implements ContentService {
     public void modifyContent(Content content, ContentDTO contentDTO) {
         BeanUtils.copyProperties(contentDTO,content);
         contentMapper.updateById(content);
+    }
+
+    @Override
+    public PageInfo<ArticleDTO> getArticlePages(Integer page, Integer limit) {
+        PageHelper.startPage(page,limit);
+        List<Content> contents = contentMapper.selectList(null);
+        List<ArticleDTO> articleDTOS = contents.stream().map(content -> {
+            ArticleDTO articleDTO = new ArticleDTO();
+            articleDTO.setId(content.getId());
+            articleDTO.setSubtitle(content.getSubtitle());
+            articleDTO.setTitle(content.getTitle());
+            articleDTO.setGmtCreate(content.getGmtCreate());
+            AdminUser user = adminService.getUserById(content.getCreator());
+            articleDTO.setName(user.getName());
+            return articleDTO;
+        }).collect(Collectors.toList());
+        PageInfo<ArticleDTO> pageInfo = new PageInfo<>(articleDTOS);
+        return pageInfo;
     }
 
 }

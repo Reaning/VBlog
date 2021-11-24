@@ -1,5 +1,6 @@
 package cn.lu.vblog.service;
 
+import cn.lu.vblog.dto.ArticleDTO;
 import cn.lu.vblog.dto.ContentDTO;
 import cn.lu.vblog.entity.Content;
 import com.github.pagehelper.PageInfo;
@@ -25,4 +26,6 @@ public interface ContentService{
     void deleteById(Long id);
 
     void modifyContent(Content content,ContentDTO contentDTO);
+
+    PageInfo<ArticleDTO> getArticlePages(Integer page, Integer limit);
 }

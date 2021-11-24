@@ -8,8 +8,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * cn.lu.vblog.util
@@ -34,5 +39,7 @@ public class CommonUtils {
 //    public boolean is_empty(PageInfo<Attach> attachs){
 //        if (attachs.get)
 //    }
+
+
 
 }

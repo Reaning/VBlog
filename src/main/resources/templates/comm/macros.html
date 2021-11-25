@@ -16,7 +16,6 @@
     <th:block th:if="${pageInfo.hasNextPage}">
         <li class="next"><a th:href="@{'/'+${prefix}+'/'+${pageInfo.nextPage}}" th:text="${nextText}"></a></li>
     </th:block>
-
 </ol>
 
 <div th:fragment="pageAdminNav(pageInfo)">

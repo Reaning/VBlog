@@ -98,17 +98,7 @@ public class ContentServiceImpl implements ContentService {
     @Override
     public PageInfo<ArticleDTO> getArticlePages(Integer page, Integer limit) {
         PageHelper.startPage(page,limit);
-        List<Content> contents = contentMapper.selectList(null);
-        List<ArticleDTO> articleDTOS = contents.stream().map(content -> {
-            ArticleDTO articleDTO = new ArticleDTO();
-            articleDTO.setId(content.getId());
-            articleDTO.setSubtitle(content.getSubtitle());
-            articleDTO.setTitle(content.getTitle());
-            articleDTO.setGmtCreate(content.getGmtCreate());
-            AdminUser user = adminService.getUserById(content.getCreator());
-            articleDTO.setName(user.getName());
-            return articleDTO;
-        }).collect(Collectors.toList());
+        List<ArticleDTO> articleDTOS = contentMapper.getAllArticle();
         PageInfo<ArticleDTO> pageInfo = new PageInfo<>(articleDTOS);
         return pageInfo;
     }

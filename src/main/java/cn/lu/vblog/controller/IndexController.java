@@ -34,4 +34,9 @@ public class IndexController {
         model.addAttribute("articles",pageInfo);
         return "blog/index";
     }
+
+    @GetMapping("contact.html")
+    public String contact(){
+        return "blog/contact";
+    }
 }
